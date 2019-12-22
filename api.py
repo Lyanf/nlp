@@ -12,7 +12,7 @@ def get_ss():
     articleid = request.json.get('id')#获取带json串请求的username参数传入的值
     # articleid = '1577015873101'
     headers = {'Content-Type': 'application/json'}
-    url = r"http://39.106.54.106:8080/Entity/U47b03b310e54f0/tournote2/Article/" + articleid
+    url = r"http://39.106.54.106:8080/Entity/U47b03b310e54f0/tournote2/Article/" + str(articleid)
     t = requests.get(url)
     a = json.loads(t.content)
     content = bs4.BeautifulSoup(a['content']).getText()
