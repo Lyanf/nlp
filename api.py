@@ -9,7 +9,9 @@ app = Flask(__name__)#创建一个服务，赋值给APP
 
 #json方式传参
 def get_ss():
-    articleid = request.json.get('id')#获取带json串请求的username参数传入的值
+    # articleid = request.json.get('id')#获取带json串请求的username参数传入的值
+    articleid = '1577015873101'
+    headers = {'Content-Type': 'application/json'}
     url = r"http://39.106.54.106:8080/Entity/U47b03b310e54f0/tournote2/Article/" + articleid
     t = requests.get(url)
     a = json.loads(t.content)
@@ -17,7 +19,7 @@ def get_ss():
     num = run_test.get_score(content)
     a['score'] = str(num)
     print(a)
-    requests.put(url, a)
+    requests.put(url,data=json.dumps(a),headers = headers)
 
 #如果不在的话，返回err对应key的value转成的json串信息
 
